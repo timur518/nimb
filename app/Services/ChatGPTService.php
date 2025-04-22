@@ -3,6 +3,7 @@ namespace App\Services;
 
 use OpenAI\Laravel\Facades\OpenAI;
 use Parsedown;
+use Illuminate\Support\Facades\Http;
 
 class ChatGPTService
 {

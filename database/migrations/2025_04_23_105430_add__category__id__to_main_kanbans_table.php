@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('books', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('author');
-            $table->text('description');
-            $table->timestamps();
+        Schema::table('main_kanbans', function (Blueprint $table) {
+            // Категория
+            $table->foreignId('category_id')->constrained('kanban_categories', 'id');
         });
     }
 
@@ -25,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('books');
+        Schema::table('main_kanbans', function (Blueprint $table) {
+            //
+        });
     }
 };

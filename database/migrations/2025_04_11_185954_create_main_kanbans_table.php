@@ -23,8 +23,7 @@ return new class extends Migration
             $table->integer('order')->default(0); // Это будет индекс порядка в колонке
             // Список задач внутри проекта
 //            $table->string('tasks_ids')->nullable();
-            // Категория
-            $table->foreignId('category_id')->constrained('kanban_categories', 'id');
+
             // Запланировано и дедлайн
             $table->date('planned_date')->nullable();
             $table->date('deadline_date')->nullable();

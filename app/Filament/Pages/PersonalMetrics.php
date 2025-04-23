@@ -10,6 +10,7 @@ use App\Models\Destiny;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MainKanban;
 use App\Filament\Widgets\KanbanStats;
+use App\Filament\Widgets\SetupProgress;
 use App\Models\Task;
 use Illuminate\Support\Carbon;
 
@@ -22,15 +23,15 @@ class PersonalMetrics extends Page
     protected function getHeaderWidgets(): array
     {
         return [
+            SetupProgress::class,
             KanbanStats::class,
         ];
     }
 
     public function getViewData(): array
     {
-        $user = Auth::user();
         // Информация для главного колеса баланса и сводки к нему
-        $indicator = BalanceIndicator::where('user_id', $user->id)->first();
+        $indicator = BalanceIndicator::where('user_id', Auth()->id())->first();
         if ($indicator) {
             $summary = [
                 'Финансы' => $this->averageFields($indicator, [
@@ -85,12 +86,12 @@ class PersonalMetrics extends Page
 
         $tasksToday = Task::whereDate('deadline_at', $today)
             ->where('is_done', 0)
-            ->where('user_id', $user->id)
+            ->where('user_id', Auth()->id())
             ->get();
 
         $tasksTomorrow = Task::whereDate('deadline_at', $tomorrow)
             ->where('is_done', 0)
-            ->where('user_id', $user->id)
+            ->where('user_id', Auth()->id())
             ->get();
 
         // Статистика соответствие миссии
@@ -126,7 +127,7 @@ class PersonalMetrics extends Page
         ];
 
         // предназначения
-        $destinies = Destiny::where('user_id', $user->id)->first();
+        $destinies = Destiny::where('user_id', Auth()->id())->first();
         if(!$destinies) {
             $destinies = (object) [
                 'mission' => 'Не заполнено',

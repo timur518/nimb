@@ -11,6 +11,7 @@ export default {
         './resources/**/**/**/**/*.blade.php',
         './resources/**/**/**/**/**/*.blade.php',
         './resources/views/filament/pages/*.blade.php',
+        './resources/views/filament/widgets/*.blade.php',
         './resources/views/vendor/filament-kanban/*.blade.php',
         './resources/views/filament/resources/thanks-dairy-resource/pages/*.blade.php',
         './resources/**/**/**/**/**/**/*.blade.php',

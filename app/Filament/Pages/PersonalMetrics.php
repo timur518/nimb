@@ -18,7 +18,7 @@ class PersonalMetrics extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-user-circle';
     protected static string $view = 'filament.pages.personal-metrics';
-    protected static ?string $title = 'Самоанализ';
+    protected static ?string $title = 'Личные показатели';
 
     protected function getHeaderWidgets(): array
     {

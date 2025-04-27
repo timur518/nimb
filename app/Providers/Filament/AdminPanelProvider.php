@@ -79,11 +79,11 @@ class AdminPanelProvider extends PanelProvider
                             ->label('Планирование дел')
                             ->items(FilamentMenuLoader::make('kanban')),
                         NavigationGroup::make()
-                            ->label('Цели и дневник')
-                            ->items(FilamentMenuLoader::make('goalsdairies')),
-                        NavigationGroup::make()
                             ->label('Колесо баланса')
                             ->items(FilamentMenuLoader::make('tracker')),
+                        NavigationGroup::make()
+                            ->label('Внутренние ориентиры')
+                            ->items(FilamentMenuLoader::make('goalsdairies')),
                         NavigationGroup::make()
                             ->label('Мои настройки')
                             ->items(FilamentMenuLoader::make('mysettings')),
@@ -101,6 +101,9 @@ class AdminPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
             ])
+            ->brandLogo(asset('images/black.svg'))
+            ->darkModeBrandLogo(asset('images/white.svg'))
+            ->favicon(asset('images/favicon.svg'))
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

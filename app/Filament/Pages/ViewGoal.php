@@ -11,6 +11,7 @@ class ViewGoal extends Page
     protected static string $view = 'filament.pages.goals-kanban.view-goal';
 
     protected static ?string $slug = 'goals/{record}';
+    public static ?string $title = 'Просмотр цели';
 
     public function mount($record): void
     {
